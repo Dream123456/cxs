@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cxs", "http://localhost/Cisco/Cxs.csproj", "{25F94272-5A06-4248-A7E6-10B16818DD9A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{25F94272-5A06-4248-A7E6-10B16818DD9A}.Debug.ActiveCfg = Debug|.NET
+		{25F94272-5A06-4248-A7E6-10B16818DD9A}.Debug.Build.0 = Debug|.NET
+		{25F94272-5A06-4248-A7E6-10B16818DD9A}.Release.ActiveCfg = Release|.NET
+		{25F94272-5A06-4248-A7E6-10B16818DD9A}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
