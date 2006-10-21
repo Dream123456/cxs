@@ -20,6 +20,7 @@
 #endregion
 
 using System.Collections;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -109,11 +110,11 @@ namespace Cxs.WebControls
 			writer.WriteFullBeginTag("CiscoIPPhoneDirectory");
 
 			writer.WriteFullBeginTag("Title");
-			writer.Write(title);
+			writer.Write(HttpUtility.HtmlEncode(title));
 			writer.WriteEndTag("Title");
 
 			writer.WriteFullBeginTag("Prompt");
-			writer.Write(prompt);
+			writer.Write(HttpUtility.HtmlEncode(prompt));
 			writer.WriteEndTag("Prompt");
 
 			foreach(object entry in entries) {
@@ -123,11 +124,11 @@ namespace Cxs.WebControls
 					writer.WriteFullBeginTag("DirectoryEntry");
 
 					writer.WriteFullBeginTag("Name");
-					writer.Write(directoryEntry.Name);
+					writer.Write(HttpUtility.HtmlEncode(directoryEntry.Name));
 					writer.WriteEndTag("Name");
 
 					writer.WriteFullBeginTag("Telephone");
-					writer.Write(directoryEntry.Telephone);
+					writer.Write(HttpUtility.HtmlEncode(directoryEntry.Telephone));
 					writer.WriteEndTag("Telephone");
 
 					writer.WriteEndTag("DirectoryEntry");
