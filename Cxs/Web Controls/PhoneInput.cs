@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -149,15 +150,15 @@ namespace Cxs.WebControls
 			writer.WriteFullBeginTag("CiscoIPPhoneInput");
 
 			writer.WriteFullBeginTag("Title");
-			writer.Write(title);
+			writer.Write(HttpUtility.HtmlEncode(title));
 			writer.WriteEndTag("Title");
 
 			writer.WriteFullBeginTag("Prompt");
-			writer.Write(prompt);
+			writer.Write(HttpUtility.HtmlEncode(prompt));
 			writer.WriteEndTag("Prompt");
 
 			writer.WriteFullBeginTag("URL");
-			writer.Write(uri);
+			writer.Write(HttpUtility.HtmlEncode(uri));
 			writer.WriteEndTag("URL");
 
 			foreach(object item in items) {
@@ -167,15 +168,15 @@ namespace Cxs.WebControls
 					writer.WriteFullBeginTag("InputItem");
 
 					writer.WriteFullBeginTag("DisplayName");
-					writer.Write(inputItem.Name);
+					writer.Write(HttpUtility.HtmlEncode(inputItem.Name));
 					writer.WriteEndTag("DisplayName");
 
 					writer.WriteFullBeginTag("QueryStringParam");
-					writer.Write(inputItem.Parameter);
+					writer.Write(HttpUtility.HtmlEncode(inputItem.Parameter));
 					writer.WriteEndTag("QueryStringParam");
 
 					writer.WriteFullBeginTag("InputFlags");
-					writer.Write(inputItem.Flags);
+					writer.Write(HttpUtility.HtmlEncode(inputItem.Flags));
 					writer.WriteEndTag("InputFlags");
 
 					// writer.WriteFullBeginTag("DefaultValue");

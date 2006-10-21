@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -110,11 +111,11 @@ namespace Cxs.WebControls
 			writer.WriteFullBeginTag("CiscoIPPhoneMenu");
 
 			writer.WriteFullBeginTag("Title");
-			writer.Write(title);
+			writer.Write(HttpUtility.HtmlEncode(title));
 			writer.WriteEndTag("Title");
 
 			writer.WriteFullBeginTag("Prompt");
-			writer.Write(prompt);
+			writer.Write(HttpUtility.HtmlEncode(prompt));
 			writer.WriteEndTag("Prompt");
 
 			foreach(object item in items) {
@@ -124,11 +125,11 @@ namespace Cxs.WebControls
 					writer.WriteFullBeginTag("MenuItem");
 
 					writer.WriteFullBeginTag("Name");
-					writer.Write(menuItem.Name);
+					writer.Write(HttpUtility.HtmlEncode(menuItem.Name));
 					writer.WriteEndTag("Name");
 
 					writer.WriteFullBeginTag("URL");
-					writer.Write(menuItem.Uri);
+					writer.Write(HttpUtility.HtmlEncode(menuItem.Uri));
 					writer.WriteEndTag("URL");
 
 					writer.WriteEndTag("MenuItem");

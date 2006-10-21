@@ -22,6 +22,8 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
+using System.Web;
+using System.Web.UI;
 
 namespace Cxs
 {
@@ -44,6 +46,22 @@ namespace Cxs
 				return(true);
 
 			return(false);
+		}
+
+		public static string BuildUri(string relativeUri, params string[] parameters)
+		{
+			HttpRequest request;
+			Uri uri;
+
+#if SITE_VANDELAY
+			uri = new Uri(new Uri("http://192.168.1.64/Cxs/"), parameters.Length == 0 ? relativeUri : string.Format("{0}?{1}", relativeUri, string.Join("&", parameters)));
+#else
+			request = HttpContext.Current.Request;
+
+			uri = new Uri(new Uri(request.Url.GetLeftPart(UriPartial.Path)), parameters.Length == 0 ? relativeUri : string.Format("{0}?{1}", relativeUri, string.Join("&", parameters)));
+#endif
+
+			return(uri.ToString());
 		}
 	}
 }

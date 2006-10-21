@@ -43,12 +43,12 @@ namespace Cxs
 
 		public static string GetUri(string directory)
 		{
-			return(string.Format("http://192.168.1.64/Cisco/Directory.aspx?Directory={0}", HttpUtility.UrlEncode(directory)));
+			return(Utility.BuildUri("Directory.aspx", string.Format("Directory={0}", HttpUtility.UrlEncode(directory))));
 		}
 
 		public static string GetUri(string directory, int start)
 		{
-			return(string.Format("http://192.168.1.64/Cisco/Directory.aspx?Directory={0}&amp;Start={1}", HttpUtility.UrlEncode(directory), start));
+			return(Utility.BuildUri("Directory.aspx", string.Format("Directory={0}", HttpUtility.UrlEncode(directory)), string.Format("Start={0}", start)));
 		}
 
 		private void Page_Load(object sender, System.EventArgs arguments)

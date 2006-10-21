@@ -42,7 +42,7 @@ namespace Cxs
 
 		public static string GetUri(string directory, Contact contact)
 		{
-			return(string.Format("http://192.168.1.64/Cisco/DirectoryEntry.aspx?Directory={0}&amp;Id={1}", HttpUtility.UrlEncode(directory), HttpUtility.UrlEncode(contact.Id)));
+			return(Utility.BuildUri("DirectoryEntry.aspx", string.Format("Directory={0}", HttpUtility.UrlEncode(directory)), string.Format("Id={0}", HttpUtility.UrlEncode(contact.Id))));
 		}
 
 		private void Page_Load(object sender, System.EventArgs arguments)
