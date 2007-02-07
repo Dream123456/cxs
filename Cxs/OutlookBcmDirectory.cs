@@ -66,7 +66,7 @@ namespace Cxs
 
 			collection = new NameValueCollection();
 
-			command = new SqlCommand("select WorkPhoneNum, MobilePhoneNum from dbo.ContactExportView where EntryGUID = convert(uniqueidentifier, @id)", connection);
+			command = new SqlCommand("select C.WorkPhoneNum, C.MobilePhoneNum, SIP.PropertyValue as SIP, PCM.FullName as AccountFullName, PCT.WorkPhoneNum as AccountWorkPhoneNum from dbo.ContactExportView C left outer join dbo.ContactAdditionalPropertyBag SIP on SIP.ContactID = C.ContactServiceID and SIP.PropertyMAPIID = 41177 join dbo.ContactMainTable CM on CM.ContactServiceID = C.ContactServiceID left outer join dbo.ContactNamesTable PCM on PCM.ContactServiceID = CM.ParentContactServiceID left outer join dbo.ContactPhoneTable PCT on PCT.ContactServiceID = CM.ParentContactServiceID where C.EntryGUID = convert(uniqueidentifier, @id)", connection);
 
 			command.Parameters.Add("@id", id);
 
@@ -78,6 +78,10 @@ namespace Cxs
 				if(reader.Read()) {
 					addTelephoneNumber(collection, reader, "Work", "WorkPhoneNum");
 					addTelephoneNumber(collection, reader, "Mobile", "MobilePhoneNum");
+					addTelephoneNumber(collection, reader, "SIP", "SIP");
+
+					if(!reader.IsDBNull(reader.GetOrdinal("AccountFullName")))
+						addTelephoneNumber(collection, reader, reader.GetString(reader.GetOrdinal("AccountFullName")), "AccountWorkPhoneNum");
 				}
 			} finally {
 				if(reader != null)
