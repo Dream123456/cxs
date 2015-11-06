@@ -1,0 +1,3 @@
+A flexible and extensible directory service that allows browsing and searching of telephone directories from Cisco 7900 series IP phones.
+
+Written in C# and utilising the Microsoft .NET Framework cxs allows access to a number of directories through a standard provider interface allowing other further directory services to be added with ease. Currently supported directories are LDAP, Microsoft Outlook Business Contact Manager and OLE DB compatible databases.
